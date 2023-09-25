@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
-  console.log(movies);
+
   useEffect(() => {
     const getTrendyMovie = async () => {
       try {

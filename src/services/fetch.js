@@ -10,7 +10,21 @@ export async function homeRespToFavorites() {
   return response.data.results;
 }
 
-export async function getMovieDetails(movieId) {
+export async function movieDetailsApi(movieId) {
   const response = await axios.get(`/movie/${movieId}?api_key=${API_KEY}`);
   return response.data;
+}
+
+export async function movieCastApi(movieId) {
+  const response = await axios.get(
+    `/movie/${movieId}/credits?api_key=${API_KEY}&language=en-US`
+  );
+  return response.data;
+}
+
+export async function movieReviewsApi(movieId) {
+  const response = await axios.get(
+    `/movie/${movieId}/reviews?api_key=${API_KEY}&language=en-US&page=1`
+  );
+  return response.data.results;
 }
