@@ -28,3 +28,10 @@ export async function movieReviewsApi(movieId) {
   );
   return response.data.results;
 }
+
+export async function requestMovieApi(query) {
+  const response = await axios.get(
+    `/search/movie?api_key=${API_KEY}&query=${query}&include_adult=false&language=en-US&page=1`
+  );
+  return response.data.results;
+}
