@@ -4,7 +4,7 @@ import scss from './Layout.module.scss';
 const Layout = () => {
   return (
     <>
-      <header>
+      <header className={scss.header}>
         <nav className={scss.navigation}>
           <ul className={scss.list}>
             <li className={scss.item}>

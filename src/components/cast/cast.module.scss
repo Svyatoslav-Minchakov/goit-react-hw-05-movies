@@ -1,0 +1,20 @@
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  list-style: none;
+  max-width: 860px;
+  padding: 0;
+}
+
+.item {
+  width: 200px;
+}
+
+.image {
+  width: 100%;
+}
+
+.name {
+  text-align: center;
+}
