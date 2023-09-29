@@ -1,6 +1,7 @@
 import { homeRespToFavorites } from 'services/fetch';
 import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import scss from './home.module.scss';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -19,11 +20,13 @@ const Home = () => {
   }, []);
 
   return (
-    <ul>
+    <ul className={scss.list}>
       {movies.map(movie => {
         return (
-          <li key={movie.id}>
-            <NavLink to={`/movies/${movie.id}`}>{movie.original_title}</NavLink>
+          <li className={scss.item} key={movie.id}>
+            <NavLink className={scss.link} to={`/movies/${movie.id}`}>
+              {movie.original_title}
+            </NavLink>
           </li>
         );
       })}

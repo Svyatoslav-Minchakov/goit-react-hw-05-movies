@@ -1,0 +1,23 @@
+.item {
+  margin-bottom: 15px;
+  background-color: #e7e0e0;
+  padding: 3px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: background-color, 100ms, ease-out;
+
+  &:hover {
+    cursor: pointer;
+    background-color: #f5bebe;
+  }
+}
+
+.link {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: rgb(95, 95, 72);
+  display: block;
+}
+
+.list {
+  list-style: none;
+}

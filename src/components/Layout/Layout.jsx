@@ -1,16 +1,21 @@
 import { NavLink, Outlet } from 'react-router-dom';
+import scss from './Layout.module.scss';
 
 const Layout = () => {
   return (
     <>
       <header>
-        <nav>
-          <ul>
-            <li>
-              <NavLink to="/">Home</NavLink>
+        <nav className={scss.navigation}>
+          <ul className={scss.list}>
+            <li className={scss.item}>
+              <NavLink className={scss.link} to="/">
+                Home
+              </NavLink>
             </li>
-            <li>
-              <NavLink to="/Movies">Movies</NavLink>
+            <li className={scss.item}>
+              <NavLink className={scss.link} to="/Movies">
+                Movies
+              </NavLink>
             </li>
           </ul>
         </nav>
