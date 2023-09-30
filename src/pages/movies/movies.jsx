@@ -9,22 +9,15 @@ const Movies = () => {
   const location = useLocation();
   const queryRequest = searchParams.get('query') ?? '';
 
-  const handleChange = e => {
-    setSearchParams({ query: e.target.value });
-  };
-
   const handleSubmit = async e => {
-    try {
-      e.preventDefault();
-      const queryRequest = searchParams.get('query') ?? '';
-      const response = await requestMovieApi(queryRequest);
-      setMovies(response);
-    } catch (error) {
-      console.error('Під час завантаження даних сталася помилка:', error);
-    }
+    e.preventDefault();
+    const query = e.target.query.value.trim().toLowerCase();
+    if (!query) return;
+    setSearchParams({ query });
   };
 
   useEffect(() => {
+    if (!queryRequest) return;
     const fetchMovies = async () => {
       try {
         const response = await requestMovieApi(queryRequest);
@@ -35,20 +28,14 @@ const Movies = () => {
     };
 
     fetchMovies();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [queryRequest]);
 
   return (
     <Suspense>
       <div className={scss.container}>
         <form onSubmit={handleSubmit}>
           <label className={scss.label}>
-            <input
-              className={scss.input}
-              type="text"
-              onChange={handleChange}
-              value={queryRequest}
-            />
+            <input className={scss.input} type="text" name="query" />
             <button className={scss.btn}>SEND</button>
           </label>
         </form>
@@ -61,7 +48,7 @@ const Movies = () => {
                   <Link
                     className={scss.link}
                     to={`/movies/${mov.id}`}
-                    state={location}
+                    state={{ from: location }}
                   >
                     <p className={scss.title}>{mov.title}</p>
                     <img
@@ -69,7 +56,7 @@ const Movies = () => {
                       src={
                         mov.poster_path
                           ? `https://image.tmdb.org/t/p/w500${mov.poster_path}`
-                          : '../../images/boy-5402743_640.jpg'
+                          : 'https://fakeimg.pl/200x283?text=NOT+FOUND&font=bebas'
                       }
                       alt={mov.original_title}
                     />

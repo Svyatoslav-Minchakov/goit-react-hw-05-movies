@@ -1,4 +1,4 @@
-import { Suspense, useEffect, useState } from 'react';
+import { Suspense, useEffect, useState, useRef } from 'react';
 import {
   NavLink,
   Outlet,
@@ -13,6 +13,7 @@ const MovieDetails = () => {
   const [movieData, setMovieData] = useState({});
   const { movieId } = useParams();
   const location = useLocation();
+  const backLinkRef = useRef(location.state?.from ?? '/');
 
   useEffect(() => {
     const getMovieDetails = async () => {
@@ -30,7 +31,7 @@ const MovieDetails = () => {
     <Suspense fallback={<h1>Loading...</h1>}>
       <div className={scss.container}>
         <div>
-          <Link className={scss.back} to={location.state ?? '/'}>
+          <Link className={scss.back} to={backLinkRef.current}>
             Back
           </Link>
           <img
@@ -38,7 +39,7 @@ const MovieDetails = () => {
             src={
               movieData.poster_path
                 ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}`
-                : '../../images/boy-5402743_640.jpg'
+                : 'https://fakeimg.pl/200x283?text=NOT+FOUND&font=bebas'
             }
             alt={movieData.title}
           />

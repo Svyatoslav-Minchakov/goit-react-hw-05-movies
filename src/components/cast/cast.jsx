@@ -31,7 +31,7 @@ const Cast = () => {
                 src={
                   item.profile_path
                     ? `https://image.tmdb.org/t/p/w500${item.profile_path}`
-                    : '../../images/boy-5402743_640.jpg'
+                    : 'https://fakeimg.pl/200x283?text=NOT+FOUND&font=bebas'
                 }
                 alt={item.original_name}
               />
