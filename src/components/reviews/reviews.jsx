@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useParams } from 'react-router-dom';
 import { movieReviewsApi } from 'services/fetch';
 
@@ -18,19 +18,19 @@ const Reviews = () => {
     getMovieReviews();
   }, [movieId]);
 
-  console.log(data);
-
   return (
-    <ul>
-      {data.map(item => {
-        return (
-          <li key={item.id}>
-            <h2>{item.author}</h2>
-            <p>{item.content}</p>
-          </li>
-        );
-      })}
-    </ul>
+    <Suspense>
+      <ul>
+        {data.map(item => {
+          return (
+            <li key={item.id}>
+              <h2>{item.author}</h2>
+              <p>{item.content}</p>
+            </li>
+          );
+        })}
+      </ul>
+    </Suspense>
   );
 };
 export default Reviews;

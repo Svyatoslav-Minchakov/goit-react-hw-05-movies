@@ -4,6 +4,9 @@
   left: 0;
   background-color: #e4ecf3;
   width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .list {
@@ -41,4 +44,10 @@
 
 .navigation {
   padding: 20px 0;
+}
+
+.title {
+  margin-right: 100px;
+  color: #727c71;
+  text-transform: uppercase;
 }

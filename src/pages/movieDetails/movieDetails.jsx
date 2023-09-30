@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import {
   NavLink,
   Outlet,
@@ -26,38 +26,43 @@ const MovieDetails = () => {
     getMovieDetails();
   }, [movieId]);
 
-  // console.log(movieData);
-
   return (
-    <div className={scss.container}>
-      <div>
-        <Link className={scss.back} to={location.state ?? '/'}>
-          Back
-        </Link>
-        <img
-          className={scss.image}
-          src={`https://image.tmdb.org/t/p/w500${movieData.poster_path}`}
-          alt={movieData.title}
-        />
-      </div>
-
-      <div className={scss.right_side}>
-        <h2>{movieData.title}</h2>
-        <p>Release date: {movieData.release_date}</p>
-        <p>Description: {movieData.overview}</p>
-        <p>film website: {movieData.homepage}</p>
-        <div className={scss.btn_box}>
-          <NavLink className={scss.btn_dop_info} to={'cast'}>
-            Cast
-          </NavLink>
-          <NavLink className={scss.btn_dop_info} to={'Reviews'}>
-            Reviews
-          </NavLink>
+    <Suspense fallback={<h1>Loading...</h1>}>
+      <div className={scss.container}>
+        <div>
+          <Link className={scss.back} to={location.state ?? '/'}>
+            Back
+          </Link>
+          <img
+            className={scss.image}
+            src={
+              movieData.poster_path
+                ? `https://image.tmdb.org/t/p/w500${movieData.poster_path}`
+                : '../../images/boy-5402743_640.jpg'
+            }
+            alt={movieData.title}
+          />
         </div>
-      </div>
 
-      <Outlet />
-    </div>
+        <div className={scss.right_side}>
+          <h2>{movieData.title}</h2>
+          <p>Release date: {movieData.release_date}</p>
+          <p>Description: {movieData.overview}</p>
+          <p>film website: {movieData.homepage}</p>
+          <div className={scss.btn_box}>
+            <NavLink className={scss.btn_dop_info} to={'cast'}>
+              Cast
+            </NavLink>
+            <NavLink className={scss.btn_dop_info} to={'Reviews'}>
+              Reviews
+            </NavLink>
+          </div>
+        </div>
+        <Suspense fallback={<h1>Loading...</h1>}>
+          <Outlet />
+        </Suspense>
+      </div>
+    </Suspense>
   );
 };
 

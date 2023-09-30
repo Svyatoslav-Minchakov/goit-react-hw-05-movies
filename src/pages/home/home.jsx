@@ -25,7 +25,7 @@ const Home = () => {
         return (
           <li className={scss.item} key={movie.id}>
             <NavLink className={scss.link} to={`/movies/${movie.id}`}>
-              {movie.original_title}
+              {movie.title}
             </NavLink>
           </li>
         );
@@ -35,5 +35,3 @@ const Home = () => {
 };
 
 export default Home;
-
-//Ключ доступа к API: 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiYTdjNjUyNjU4ZDhkYjQyMjU2MjU1ZWJlODBlNTI5MCIsInN1YiI6IjY1MTA2ZTllM2E0YTEyMDBmZjRmMDc0ZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Q2Xv1BHZcg7DH5aoyX8dxr4V865NR1NGCSxTbiP9rrU'
