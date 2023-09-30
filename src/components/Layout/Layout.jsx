@@ -14,7 +14,7 @@ const Layout = () => {
               </NavLink>
             </li>
             <li className={scss.item}>
-              <NavLink className={scss.link} to="/Movies">
+              <NavLink className={scss.link} to="/movies">
                 Movies
               </NavLink>
             </li>
