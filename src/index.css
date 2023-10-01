@@ -14,3 +14,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+li .active {
+  color: #b82c09b7;
+}
